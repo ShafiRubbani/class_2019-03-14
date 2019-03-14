@@ -1,6 +1,6 @@
 ---
 title: "Polls"
-author: "Shafi Rubbani"
+author: "Simone Chu and Shafi Rubbani"
 date: "3/14/2019"
 output: html_document
 ---
