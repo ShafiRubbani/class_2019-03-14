@@ -40,11 +40,10 @@ spain_polls %>%
   filter(party %in% top_parties) %>% 
   ggplot(aes(x = date, y = vote, color = party)) + 
   geom_smooth(se = FALSE) + 
-  labs(title = "Poll of Polls", x = "Date", y = "Vote", fill = "Party") +
-  scale_fill_manual(values = c("cs", "podemos", "pp", "psoe", "vox"),
-                    labels = c("Ciudadanos",
-                               "Unidos Podemos",
-                               "Partido Popular",
-                               "Partido Socialista Obrero Español",
-                               "Vox"))
+  labs(x = "Date", y = "Percentage Support", color = "Party") #+
+  #scale_color_manual(labels = c("Ciudadanos",
+                               #"Unidos Podemos",
+                               #"Partido Popular",
+                               #"Partido Socialista Obrero Español",
+                               #"Vox"))
 ```
