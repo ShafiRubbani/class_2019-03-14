@@ -13,8 +13,6 @@ library(gt)
 library(janitor)
 ```
 
-## Polls
-
 ```{r polls, message=FALSE, echo=FALSE, include=TRUE, warning=FALSE, cache=TRUE}
 
 spain_polls <- read_csv(file = "https://pollofpolls.eu/get/polls/ES-parliament/format/csv") %>% 
@@ -41,7 +39,7 @@ spain_polls %>%
   ggplot(aes(x = date, y = vote, color = party)) + 
   geom_smooth(se = FALSE) + 
   geom_jitter() +
-  labs(x = "Date", y = "Percentage Support", color = "Party") #+
+  labs(title = "Political Party Support in Spain", x = "Date", y = "Percentage Support", color = "Party", caption = "Source: Poll of Polls") #+
   #scale_color_manual(labels = c("Ciudadanos",
                                #"Unidos Podemos",
                                #"Partido Popular",
