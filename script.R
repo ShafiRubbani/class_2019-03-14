@@ -17,3 +17,12 @@ spain_polls %>%
   filter(firm %in% good_firms) %>% 
   ggplot(aes(x = date, y = vote, color = party)) + 
   geom_smooth()
+
+top_parties <- spain_polls %>% 
+  group_by(party) %>% 
+  summarize(avg_vote = mean(vote)) %>% 
+  arrange(desc(avg_vote)) %>% 
+  pull(party)
+
+  slice(1:5) %>% 
+  pull(party)

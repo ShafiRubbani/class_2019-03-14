@@ -27,12 +27,24 @@ good_firms <- spain_polls %>%
   filter(number >= 40) %>% 
   pull(firm)
 
+top_parties <- spain_polls %>% 
+  group_by(party) %>% 
+  summarize(avg_vote = mean(vote, na.rm = TRUE)) %>% 
+  arrange(desc(avg_vote)) %>% 
+  slice(1:5) %>% 
+  pull(party)
+
 spain_polls %>%
   filter(Sys.Date() - date < 365) %>% 
   filter(firm %in% good_firms) %>% 
+  filter(party %in% top_parties) %>% 
   ggplot(aes(x = date, y = vote, color = party)) + 
-  geom_smooth() + 
-  scale_fill_manual(values = c("bng", "cc", "cs", "eh_bildu", "erc", "p_de_cat", "pacma", 
-                               "pnveaj", "podemos", "pp", "psoe", "vox"),
-                    labels = c(""))
+  geom_smooth(se = FALSE) + 
+  labs(title = "Poll of Polls", x = "Date", y = "Vote", fill = "Party") +
+  scale_fill_manual(values = c("cs", "podemos", "pp", "psoe", "vox"),
+                    labels = c("Ciudadanos",
+                               "Unidos Podemos",
+                               "Partido Popular",
+                               "Partido Socialista Obrero Español",
+                               "Vox"))
 ```
